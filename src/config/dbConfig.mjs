@@ -14,6 +14,4 @@ export const connectDB = async () => {
     }
   };
 
-  // mongodb+srv://bustamantecg:<db_password>@clusterpais.laimf.mongodb.net/
- 
-  //mongodb+srv://bustamantecg:Timpa.2026@clusterpais.laimf.mongodb.net/paises_db?retryWrites=true&w=majority
+  
