@@ -1,0 +1,33 @@
+intalar depedencias
+===================
+npm install express
+npm install express-validator
+npm install ejs
+npm install express-ejs-layouts
+npm install mongoose
+npm install method-override
+
+npm install express node-fetch
+npm install body-parser
+
+
+correr el servidor
+==================
+
+node --watch app.mjs
+
+
+Api a consumir: http://restcountries.com/v3.1/all
+===============
+
+recomendacion estructura de paises: https://drive.google.com/file/d/171D5b7hXYAKisDpog79IsnJWQVBikZuY/view?usp=sharing
+===================================
+
+
+Pruebas:Usa herramientas como Postman o cURL para probar las rutas:
+===================================================================
+POST /api/countries → Crear un país.
+GET /api/countries → Listar todos los países.
+GET /api/countries/:id → Obtener un país por ID.
+PUT /api/countries/:id → Actualizar un país.
+DELETE /api/countries/:id → Eliminar un país.

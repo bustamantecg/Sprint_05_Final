@@ -1,0 +1,30 @@
+const processFile = () => {
+    const data = JSON.parse(fs.readFileSync(outputPath, 'utf-8')); // Lee el archivo descargado
+      // Aplico filtro solicitado y elimino las propiedades
+    const filteredData = data.filter(item => item.languages && item.languages.spa === "Spanish");
+  
+    const cleanedData = filteredData.map(item => {
+      delete item.translations; 
+      delete item.tld;
+      delete item.cca2;      
+      delete item.ccn3;
+      delete item.cca3;
+      delete item.cioc;
+      delete item.idd;
+      delete item.altSpellings;
+      delete item.car;
+      delete item.coatOfArms;
+      delete item.postalCode;
+      delete item.demonyms;
+      return item;
+    });
+    
+    const updatedData = filteredData.map(item => {
+        // Agregar la nueva propiedad "creador"
+        item.creador = "CarlosBustamante";
+    });  
+    // Guarda el resultado en un nuevo archivo
+    fs.writeFileSync('./processed_data.json', JSON.stringify(cleanedData, null, 2));
+    console.log('Archivo procesado y guardado como "processed_data.json".');
+  };
+  

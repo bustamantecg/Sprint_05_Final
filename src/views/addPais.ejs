@@ -1,0 +1,121 @@
+<section>
+  <div class="card">
+    <h5 class="card-header">Insertar</h5>
+    <div class="card-body">
+      <h5 class="card-title">Nuevo Pais</h5>
+
+      <div class="container mt-5">
+        <p class="card-text">Por favor complete los datos del formulario</p>
+        <form action="/pais/crear" method="POST">
+          <% if (errores && errores.length> 0) { %>
+            <div class="alert alert-danger">
+              <ul>
+                <% errores.forEach(error=> { %>
+                  <li>
+                    <%= error.msg %>
+                  </li>
+                  <% }) %>
+              </ul>
+            </div>
+            <% } %>
+
+              <div class="mb-3">
+                <label for="common" class="form-label">Nombre popular:</label>
+                <input type="text" id="common" name="name[common]" class="form-control" required>
+              </div>
+
+              <!-- Poderes -->
+              <div class="mb-3">
+                <label for="official" class="form-label">Nombre oficial:</label>
+                <input type="text" id="official" name="name[official]" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="independent" class="form-label">¿Es independiente?. Seleccione Si o No</label>
+                <select id="independent" name="independent" class="form-control" required>
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="status" class="form-label">Estado:</label>
+                <input type="text" id="status" name="status" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="unMember" class="form-label">Miembro de la ONU: Seleccione Si o No</label>
+                <select id="unMember" name="unMember" class="form-control" required>
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="region" class="form-label">Región:</label>
+                <input type="text" id="region" name="region" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="subregion" class="form-label">Subregión:</label>
+                <input type="text" id="subregion" name="subregion" class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="area" class="form-label">Área (km²):</label>
+                <input type="number" id="area" name="area" class="form-control" required>
+              </div>
+
+              <!-- Capital y continentes -->
+              <div class="mb-3">
+                <label for="capital" class="form-label">Capital:</label>
+                <input type="text" id="capital" name="capital"  class="form-control"
+                    placeholder="Separar por comas si son varias">
+              </div>
+              <div class="mb-3">
+                <label for="continents" class="form-label">Continentes:</label>
+                <input type="text" id="continents" name="continents" placeholder="Separar por comas si son varios"
+                class="form-control" required>
+              </div>
+
+              <!-- Coordenadas -->
+              <div class="mb-3">
+                <label for="latlng" class="form-label">Latitud y Longitud:</label>
+                <input type="text" id="latlng" name="latlng" placeholder="Ejemplo: 10.0,20.0"  class="form-control" required>
+              </div>
+
+              <!-- Población -->
+              <div class="mb-3">
+                <label for="population" class="form-label">Población:</label>
+                <input type="number" id="population" name="population" class="form-control" required>
+              </div>
+
+              <!-- Creador -->
+              <div class="mb-3">
+                <label for="creador" class="form-label">Creador:</label>
+                <input type="text" id="creador" name="creador" class="form-control" required>
+              </div>
+
+              <!-- Botón de enviar -->
+              <button type="submit" class="btn btn-outline-primary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-floppy2-fill" viewBox="0 0 16 16">
+                  <path d="M12 2h-2v3h2z" />
+                  <path
+                    d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1" />
+                </svg>&nbsp;&nbsp;Registrar Pais
+              </button>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <a href="/pais/todos" class="btn btn-outline-secondary">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-x-square" viewBox="0 0 16 16">
+                  <path
+                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                  <path
+                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                </svg>&nbsp;&nbsp;Cancelar
+              </a>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
