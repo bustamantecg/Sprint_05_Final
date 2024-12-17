@@ -76,6 +76,14 @@ const processFile = () => {
       delete item.coatOfArms;
       delete item.postalCode;
       delete item.demonyms;
+      delete item.fifa;
+      delete item.flag;
+      delete item.flags;
+      delete item.maps;
+      delete item.status;
+      delete item.latlng;
+      delete item.landlocked;
+      delete item.startOfWeek;
 
       // Agregar propiedad "creador"
       item.creador = "CarlosBustamante";
@@ -121,7 +129,7 @@ app.use((req, res, next) => {
 
 
 /************* llalmo al scripts insertarPaise una sola vez, para no duplicarlos ********* */
-
+/*
 (async () => {  
   try {
     await insertarPaises();
@@ -130,7 +138,7 @@ app.use((req, res, next) => {
     console.error("Error al ejecutar el script insertarPaises:", error);
   }
 })();
-
+*/
 /************ definiciones de los EndPoint *************************************************** */
 
 app.use('/pais', paisesRoutes);

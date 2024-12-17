@@ -12,8 +12,7 @@ const PaisSchema = new mongoose.Schema({
       }
     }
   },
-  independent: { type: Boolean, required: true },
-  status: { type: String, required: true },
+  independent: { type: Boolean, required: true },  
   unMember: { type: Boolean, required: true },
   currencies: {
     type: Map,
@@ -25,27 +24,13 @@ const PaisSchema = new mongoose.Schema({
   capital: { type: [String], default: [] },
   region: { type: String, required: true },
   subregion: { type: String },
-  languages: { type: Map, of: String },
-  latlng: { type: [Number], required: true },
-  landlocked: { type: Boolean, required: true },
+  languages: { type: Map, of: String },    
   borders: { type: [String], default: [] },
   area: { type: Number, required: true },
-  flag: { type: String },
-  maps: {
-    googleMaps: { type: String },
-    openStreetMaps: { type: String }
-  },
   population: { type: Number, required: true },
-  gini: { type: Map, of: Number },
-  fifa: { type: String },
+  gini: { type: Map, of: Number },  
   timezones: { type: [String], required: true },
-  continents: { type: [String], required: true },
-  flags: {
-    png: { type: String },
-    svg: { type: String },
-    alt: { type: String }
-  },
-  startOfWeek: { type: String, required: true },
+  continents: { type: [String], required: true },  
   capitalInfo: {
     latlng: { type: [Number], default: [] }
   },

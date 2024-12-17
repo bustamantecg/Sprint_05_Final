@@ -4,8 +4,8 @@
     <div class="card-body">
       <h5 class="card-title">Nuevo Pais</h5>
 
-      <div class="container mt-5">
-        <p class="card-text">Por favor complete los datos del formulario</p>
+      <div class="container mt-4">
+        <p class="card-text"> <i>Por favor complete los datos del formulario</i></p>
         <form action="/pais/crear" method="POST">
           <% if (errores && errores.length> 0) { %>
             <div class="alert alert-danger">
@@ -36,11 +36,6 @@
                   <option value="true">Sí</option>
                   <option value="false">No</option>
                 </select>
-              </div>
-
-              <div class="mb-3">
-                <label for="status" class="form-label">Estado:</label>
-                <input type="text" id="status" name="status" class="form-control" required>
               </div>
 
               <div class="mb-3">
@@ -77,12 +72,6 @@
                 class="form-control" required>
               </div>
 
-              <!-- Coordenadas -->
-              <div class="mb-3">
-                <label for="latlng" class="form-label">Latitud y Longitud:</label>
-                <input type="text" id="latlng" name="latlng" placeholder="Ejemplo: 10.0,20.0"  class="form-control" required>
-              </div>
-
               <!-- Población -->
               <div class="mb-3">
                 <label for="population" class="form-label">Población:</label>
@@ -92,7 +81,8 @@
               <!-- Creador -->
               <div class="mb-3">
                 <label for="creador" class="form-label">Creador:</label>
-                <input type="text" id="creador" name="creador" class="form-control" required>
+                <input type="text" id="creador" name="creador" class="form-control" 
+                  value= "Carlos Bustamante" required>
               </div>
 
               <!-- Botón de enviar -->
