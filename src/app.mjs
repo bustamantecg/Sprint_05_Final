@@ -86,7 +86,7 @@ const processFile = () => {
       delete item.startOfWeek;
 
       // Agregar propiedad "creador"
-      item.creador = "CarlosBustamante";
+      item.creador = "Carlos Bustamante";
 
       return item; // IMPORTANTE: devolver el objeto modificado
     });

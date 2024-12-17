@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import path from "path";
-import Pais from "../models/paisModel.mjs";
+import Pais from "../models/Pais.mjs";
 
 const insertarPaises = async () => {  
   try {

@@ -1,8 +1,8 @@
-import { obtenerTodosLosPaises, deletePais, insertarPais}
+import { obtenerTodosLosPaises, deletePais, insertarPais, getPaisById, updatePais}
   from '../services/paisServices.mjs';
 import { renderizandoListaPaises, renderizandoPais }
   from '../views/responsiveView.mjs';
-import Pais from '../models/paisModel.mjs';
+
 
 
 //******** Listar todos los países ********************************/ 
@@ -10,9 +10,7 @@ export async function obtenerTodosLosPaisesController(req, res){
     //console.log(`Ruta llamada: ${req.method} ${req.url}`);
     const paises = await obtenerTodosLosPaises();
     const paisesRenderizados = renderizandoListaPaises(paises);
-    res.render('paises_listado', {
-                paisesRenderizados,    
-                title: 'Listado'}
+    res.render('paises_listado', {paisesRenderizados, title:'Listado de Paises'}
     );  
 };
 
@@ -30,11 +28,7 @@ export const deletePaisController = async (req, res) => {
       const paises = await obtenerTodosLosPaises();  
       // Renderizar la lista actualizada
       const paisesRenderizados = renderizandoListaPaises(paises);
-      return res.render('paises_listado', { 
-        paisesRenderizados,  
-        title: 'Listado' 
-      });
-  
+      res.render('paises_listado', { paisesRenderizados, title: 'Listado' });  
     } catch (error) {
       console.error('Error al eliminar el País:', error.message);
       res.status(500).send('Error al eliminar País');
@@ -48,7 +42,7 @@ export const FormularioNuevoPaisController = (req, res) => {
 
 export const insertPaisController = async (req, res) => {  
   try {
-    // Llama al servicio con los datos del formulario
+    // Llama al servicio.insertarPais con los datos del formulario
     const nuevoPais = await insertarPais(req.body);
     res.redirect('/pais/todos'); // Redirige al endpoint del listado de pasises
   } catch (error) {    
@@ -56,4 +50,77 @@ export const insertPaisController = async (req, res) => {
   }
 };
 
-/********************************************************************************** */
+/****************** UpDate Pais ************************************************* */
+export const getPaisController = async (req, res) => {  
+  try {
+    const { id } = req.params;
+    const pais = await getPaisById(id); // Llama al servicio para obtener los datos
+    if (!pais) {
+      return res.status(404).send('País no encontrado');
+    }    
+    res.render('editarPais', { title:'Editar País', pais }); // Renderiza el formulario con los datos
+  } catch (error) {    
+    res.status(500).send('Error al cargar los datos del País');
+  }
+};
+
+
+
+export const updatePaisController = async (req, res) => {
+  try {
+    // Extraer el ID del parámetro de la URL
+    const { id } = req.params;
+
+    // Extraer los datos validados del formulario
+    const {
+      name,
+      capital,
+      borders,
+      area,
+      population,
+      gini,
+      independent,
+      unMember,
+      timezones,
+      creador,
+    } = req.body;
+
+    // Buscar y actualizar el país por ID
+    const paisActualizado = await Pais.findByIdAndUpdate(
+      id, // ID del país a actualizar
+      {
+        name,
+        capital: Array.isArray(capital) ? capital : capital.split(',').map(c => c.trim()),
+        borders: Array.isArray(borders) ? borders : borders.split(',').map(b => b.trim()),
+        area,
+        population,
+        gini,
+        independent: independent === 'true', // Convertir a booleano si es necesario
+        unMember: unMember === 'true', // Convertir a booleano si es necesario
+        timezones: Array.isArray(timezones)
+          ? timezones
+          : timezones.split(',').map(tz => tz.trim()),
+        creador,
+        updatedAt: Date.now(), // Actualizar la fecha de modificación
+      },
+      { new: true, runValidators: true } // Opciones: devolver el documento actualizado y validar
+    );
+
+    // Validar si el país existe
+    if (!paisActualizado) {
+      return res.status(404).render('editarPais', {
+        errores: [{ msg: 'El país no fue encontrado.' }],
+        datos: req.body,
+      });
+    }
+
+    // Redirigir o enviar respuesta de éxito
+    res.redirect(`/paises/${id}`); // Redirige a la vista del país actualizado
+  } catch (error) {
+    console.error('Error al actualizar el país:', error);
+    return res.status(500).render('editarPais', {
+      errores: [{ msg: 'Ocurrió un error en el servidor.' }],
+      datos: req.body,
+    });
+  }
+};

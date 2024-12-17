@@ -1,3 +1,4 @@
+/*
 import mongoose from "mongoose";
 
 const PaisSchema = new mongoose.Schema({
@@ -44,3 +45,4 @@ PaisSchema.index({ 'name.official': 1 });
 const Pais = mongoose.model('paises', PaisSchema);
 
 export default Pais;
+*/
