@@ -52,7 +52,7 @@
                     <td><%= pais.area.toLocaleString('es-ES') %> km²</td>
                     <td><%= pais.population.toLocaleString('es-ES') %></td>
                     <td>
-                      <%= pais.gini ? Object.entries(pais.gini).map(([year, value]) => `${year}: ${value}`).join('<br>') : 'No disponible' %>
+                       <%= pais.gini ? Object.entries(pais.gini).map(([year, value]) => `${year}: ${value}`).join('<br>') : 'No disponible' %>       
                     </td>
                     <td><%= pais.timezones.join(', ') %></td>
                     <td><%= pais.creador %></td>

@@ -39,22 +39,6 @@
               </div>
         
           <div class="mb-3">
-            <label for="independent" class="form-label">¿Es independiente?</label>
-            <select id="independent" name="independent" class="form-control" required>
-              <option value="true" <%= pais.independent ? 'selected' : '' %>>Sí</option>
-              <option value="false" <%= !pais.independent ? 'selected' : '' %>>No</option>
-            </select>
-          </div>
-        
-          <div class="mb-3">
-            <label for="unMember" class="form-label">Miembro de la ONU:</label>
-            <select id="unMember" name="unMember" class="form-control" required>
-              <option value="true" <%= pais.unMember ? 'selected' : '' %>>Sí</option>
-              <option value="false" <%= !pais.unMember ? 'selected' : '' %>>No</option>
-            </select>
-          </div>
-        
-          <div class="mb-3">
             <label for="area" class="form-label">Área (km²):</label>
             <input type="number" id="area" name="area" class="form-control" value="<%= pais.area %>" required>
           </div>

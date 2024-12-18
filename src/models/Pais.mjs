@@ -6,12 +6,9 @@ delete mongoose.connection.models["paises"];
 const PaisSchema = new mongoose.Schema(
   {
     name: {
-      common: { type: String, required: true },
-      official: { type: String, required: true },
       nativeName: {
         spa: {
-          official: { type: String, required: true },
-          common: { type: String },
+          official: { type: String, required: true }, // Campo obligatorio para el nombre oficial en español
         },
       },
     },
@@ -19,11 +16,11 @@ const PaisSchema = new mongoose.Schema(
     borders: { type: [String], default: ["Sin fronteras"] }, // Array de Strings
     area: { type: Number, required: true }, // Número
     population: { type: Number, required: true }, // Número
-    gini: { type: mongoose.Schema.Types.Mixed, default: "No disponible" }, // Objeto o String
+    //gini: { type: mongoose.Schema.Types.Mixed, default: "No disponible" }, // Objeto o String
+    gini: { type: Map, of: Number }, 
     timezones: { type: [String], required: true }, // Array de Strings
     creador: { type: String, required: true },
-  },
-  { timestamps: true }
+  }
 );
 
 const Pais = mongoose.model("paises", PaisSchema);

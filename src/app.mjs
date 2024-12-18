@@ -129,7 +129,7 @@ app.use((req, res, next) => {
 
 
 /************* llalmo al scripts insertarPaise una sola vez, para no duplicarlos ********* */
-/*
+
 (async () => {  
   try {
     await insertarPaises();
@@ -138,7 +138,7 @@ app.use((req, res, next) => {
     console.error("Error al ejecutar el script insertarPaises:", error);
   }
 })();
-*/
+
 /************ definiciones de los EndPoint *************************************************** */
 
 

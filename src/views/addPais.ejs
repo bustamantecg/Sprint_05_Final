@@ -2,90 +2,113 @@
   <div class="card">
     <h5 class="card-header">Insertar</h5>
     <div class="card-body">
-      <h5 class="card-title">Nuevo Pais</h5>
+      <h5 class="card-title">Nuevo País</h5>
 
       <div class="container mt-4">
-        <p class="card-text"> <i>Por favor complete los datos del formulario</i></p>
+        <p class="card-text"><i>Por favor complete los datos del formulario</i></p>
         <form action="/pais/crear" method="POST">
-          <% if (errores && errores.length> 0) { %>
+          <% if (errores && errores.length > 0) { %>
             <div class="alert alert-danger">
               <ul>
-                <% errores.forEach(error=> { %>
+                <% errores.forEach(error => { %>
                   <li>
                     <%= error.msg %>
                   </li>
-                  <% }) %>
+                <% }) %>
               </ul>
             </div>
-            <% } %>
+          <% } %>
 
-              <!-- Nombre común -->
-              <div class="mb-3">
-                <label for="common" class="form-label">Nombre popular:</label>
-                <input type="text" id="common" name="name[common]" class="form-control" required>
-              </div>
+          <!-- Nombre común 
+          <div class="mb-3">
+            <label for="common" class="form-label">Nombre popular:</label>
+            <input type="text" id="common" name="name[common]" class="form-control" required>
+          </div>
 
-              <!-- Nombre oficial -->
-              <div class="mb-3">
-                <label for="official" class="form-label">Nombre oficial:</label>
-                <input type="text" id="official" name="name[official]" class="form-control" required>
-              </div>
+          Nombre oficial 
+          <div class="mb-3">
+            <label for="official" class="form-label">Nombre oficial:</label>
+            <input type="text" id="official" name="name[official]" class="form-control" required>
+          </div>
 
-              <!-- Nombre oficial en español -->
-              <div class="mb-3">
-                <label for="nativeNameSpaOfficial" class="form-label">Nombre oficial (Español):</label>
-                <input type="text" id="nativeNameSpaOfficial" name="name[nativeName][spa][official]"
-                  class="form-control" required>
-              </div>
+           Nombre oficial en español 
+          <div class="mb-3">
+            <label for="nativeNameSpaOfficial" class="form-label">Nombre oficial (Español):</label>
+            <input type="text" id="nativeNameSpaOfficial" name="name[nativeName][spa][official]" class="form-control" required>
+          </div>
 
-              <div class="mb-3">
-                <label for="area" class="form-label">Área (km²):</label>
-                <input type="number" id="area" name="area" class="form-control" required>
-              </div>
+           Nombre común en español 
+          <div class="mb-3">
+            <label for="nativeNameSpaCommon" class="form-label">Nombre popular (Español):</label>
+            <input type="text" id="nativeNameSpaCommon" name="name[nativeName][spa][common]" class="form-control">
+          </div>
+-->
+          <div class="mb-3">
+            <label for="nombreEspanol" class="form-label">Nombre oficial en español:</label>
+            <input type="text" id="nombreEspanol" name="nombreEspanol" class="form-control" required>
+          </div>
 
-              <!-- Capital y continentes -->
-              <div class="mb-3">
-                <label for="capital" class="form-label">Capital:</label>
-                <input type="text" id="capital" name="capital" class="form-control"
-                  placeholder="Separar por comas si son varias">
-              </div>
-              <div class="mb-3">
-                <label for="continents" class="form-label">Continentes:</label>
-                <input type="text" id="continents" name="continents" placeholder="Separar por comas si son varios"
-                  class="form-control" required>
-              </div>
+          <!-- Área -->
+          <div class="mb-3">
+            <label for="area" class="form-label">Área (km²):</label>
+            <input type="number" id="area" name="area" class="form-control" required>
+          </div>
 
-              <!-- Población -->
-              <div class="mb-3">
-                <label for="population" class="form-label">Población:</label>
-                <input type="number" id="population" name="population" class="form-control" required>
-              </div>
+          <!-- Capital -->
+          <div class="mb-3">
+            <label for="capital" class="form-label">Capital:</label>
+            <input type="text" id="capital" name="capital" class="form-control" placeholder="Separar por comas si son varias" required>
+          </div>
 
-              <!-- Creador -->
-              <div class="mb-3">
-                <label for="creador" class="form-label">Creador:</label>
-                <input type="text" id="creador" name="creador" class="form-control" value="Carlos Bustamante" required>
-              </div>
+          <!-- Fronteras -->
+          <div class="mb-3">
+            <label for="borders" class="form-label">Países Fronterizos:</label>
+            <input type="text" id="borders" name="borders" class="form-control" placeholder="Separar por comas si son varios">
+          </div>
 
-              <!-- Botón de enviar -->
-              <button type="submit" class="btn btn-outline-primary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-floppy2-fill" viewBox="0 0 16 16">
-                  <path d="M12 2h-2v3h2z" />
-                  <path
-                    d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1" />
-                </svg>&nbsp;&nbsp;Registrar Pais
-              </button>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="/pais/todos" class="btn btn-outline-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                  class="bi bi-x-square" viewBox="0 0 16 16">
-                  <path
-                    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
-                  <path
-                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                </svg>&nbsp;&nbsp;Cancelar
-              </a>
+          <!-- Población -->
+          <div class="mb-3">
+            <label for="population" class="form-label">Población:</label>
+            <input type="number" id="population" name="population" class="form-control" required>
+          </div>
+
+          <!-- GINI -->
+          <div class="mb-3">
+            <label for="gini" class="form-label">GINI (coeficiente):</label>
+            <input type="text" id="gini" name="gini" class="form-control" placeholder="Por ejemplo: {'2019': 25.3}">
+          </div>
+
+          <!-- Zonas horarias -->
+          <div class="mb-3">
+            <label for="timezones" class="form-label">Zonas horarias:</label>
+            <input type="text" id="timezones" name="timezones" class="form-control" placeholder="Separar por comas si son varias" required>
+          </div>
+
+          <!-- Creador -->
+          <div class="mb-3">
+            <label for="creador" class="form-label">Creador:</label>
+            <input type="text" id="creador" name="creador" class="form-control" value="Carlos Bustamante" required>
+          </div>
+
+          <!-- Botón de enviar -->
+          <button type="submit" class="btn btn-outline-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-floppy2-fill" viewBox="0 0 16 16">
+              <path d="M12 2h-2v3h2z" />
+              <path
+                d="M1.5 0A1.5 1.5 0 0 0 0 1.5v13A1.5 1.5 0 0 0 1.5 16h13a1.5 1.5 0 0 0 1.5-1.5V2.914a1.5 1.5 0 0 0-.44-1.06L14.147.439A1.5 1.5 0 0 0 13.086 0zM4 6a1 1 0 0 1-1-1V1h10v4a1 1 0 0 1-1 1zM3 9h10a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1" />
+            </svg>&nbsp;&nbsp;Registrar País
+          </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="/pais/todos" class="btn btn-outline-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-x-square" viewBox="0 0 16 16">
+              <path
+                d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+            </svg>&nbsp;&nbsp;Cancelar
+          </a>
         </form>
       </div>
     </div>

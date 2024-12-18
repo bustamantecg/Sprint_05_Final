@@ -22,8 +22,13 @@ router.delete('/eliminar/porid/:id', deletePaisController);
 //************ Formulario y alta de Pais  *************************************************
 router.get('/crear', FormularioNuevoPaisController); 
 router.post('/crear', (req, res, next) => {
-    //console.log("Datos", req.body); // Muestra los datos enviados desde el formulario
+  console.log("Lo k viene es req.body - entro en updatePaisController");
+  console.log(req.body);
+    //console.log("Datos", req.body); // Muestra los datos enviados desde el formulario    
     req.body.capital = req.body.capital.split(',').map(p => p.trim());
+    req.body.borders = req.body.borders.split(',').map(b => b.trim());
+    //req.body.gini = { [2020]: Number(req.body.gini.split(':')[1]) };
+
     next();
   }, paisesValidaciones(), manejadorValidacionErrores('addPais'), insertPaisController);
 

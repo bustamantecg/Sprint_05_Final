@@ -5,8 +5,7 @@ import IRepository from "./IRepository.mjs";
 class PaisRepository extends IRepository{
 
     async obtenerTodos(){
-        return await Pais.find({});
-        
+        return await Pais.find({});        
     }
 
     async deletePaisById(id){

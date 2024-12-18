@@ -35,6 +35,22 @@ const processFile = () => {
             <input type="text" id="continents" name="continents" class="form-control" value="<%= pais.continents %>" placeholder="Separar por comas si son varios" required>
           </div>
 
+          <div class="mb-3">
+            <label for="independent" class="form-label">¿Es independiente?</label>
+            <select id="independent" name="independent" class="form-control" required>
+              <option value="true" <%= pais.independent ? 'selected' : '' %>>Sí</option>
+              <option value="false" <%= !pais.independent ? 'selected' : '' %>>No</option>
+            </select>
+          </div>
+        
+          <div class="mb-3">
+            <label for="unMember" class="form-label">Miembro de la ONU:</label>
+            <select id="unMember" name="unMember" class="form-control" required>
+              <option value="true" <%= pais.unMember ? 'selected' : '' %>>Sí</option>
+              <option value="false" <%= !pais.unMember ? 'selected' : '' %>>No</option>
+            </select>
+          </div>          
+//******************************************************************************************************************
 alta formulario 4 campos        
               <div class="mb-3">
                 <label for="region" class="form-label">Región:</label>

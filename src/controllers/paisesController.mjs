@@ -9,6 +9,14 @@ import { renderizandoListaPaises, renderizandoPais }
 export async function obtenerTodosLosPaisesController(req, res){
     //console.log(`Ruta llamada: ${req.method} ${req.url}`);
     const paises = await obtenerTodosLosPaises();
+
+    paises.forEach((pais) => {
+      if (pais.gini instanceof Map) {
+        pais.gini = Object.fromEntries(pais.gini); // Transforma el Map en un objeto
+      }
+    });
+
+
     const paisesRenderizados = renderizandoListaPaises(paises);
     res.render('paises_listado', {paisesRenderizados, title:'Listado de Paises'}
     );  
@@ -72,6 +80,7 @@ export const getPaisController = async (req, res) => {
 
 
 export const updatePaisController = async (req, res) => {
+
   try {
     // Extraer el ID del parámetro de la URL
     const { id } = req.params;

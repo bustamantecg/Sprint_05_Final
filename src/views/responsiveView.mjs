@@ -29,26 +29,24 @@ export function renderizandoPais(pais) {
     
     area: pais.area || null,
     population: pais.population || null,
-    gini: pais.gini
-      ? convertirObjeto(pais.gini)
-      : null,
+    gini: pais.gini instanceof Map
+      ? Object.fromEntries(pais.gini) // Convertimos el Map en un objeto
+      : pais.gini || null, // Mantenemos el valor si ya es un objeto o lo dejamos en null
     timezones: Array.isArray(pais.timezones)
       ? pais.timezones
       : typeof pais.timezones === 'string'
       ? [pais.timezones]
       : [],
     
-  /*  continents: Array.isArray(pais.continents)
+    /* continents: Array.isArray(pais.continents)
       ? pais.continents.join(', ')
-      : null,*/
+      : null, */
     capitalInfo: {
       latlng: Array.isArray(pais.capitalInfo?.latlng)
         ? pais.capitalInfo.latlng
         : [],
     },
     creador: pais.creador || 'Desconocido',
-    createdAt: pais.createdAt || null,
-    updatedAt: pais.updatedAt || null,
   };
 }
 
@@ -58,9 +56,12 @@ export function renderizandoListaPaises(paises) {
     : [];
 }
 
-// Función auxiliar para convertir un objeto en clave-valor
+// Función auxiliar para convertir objetos simples en clave-valor
 function convertirObjeto(obj) {
   if (obj && typeof obj === 'object') {
+    if (obj instanceof Map) {
+      return Object.fromEntries(obj); // Si es un Map, convertimos a objeto
+    }
     return Object.entries(obj).reduce((acc, [clave, valor]) => {
       acc[clave] = valor;
       return acc;

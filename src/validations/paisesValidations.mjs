@@ -1,7 +1,7 @@
 import { body } from 'express-validator';
 
 const paisesValidaciones = () => [
-  body('name.official')
+  body('nombreEspanol')
     .notEmpty().withMessage('El nombre oficial es requerido.')
     .isString().withMessage('El nombre oficial debe ser una cadena de texto.')
     .isLength({ min: 3, max: 90 }).withMessage('El nombre oficial debe tener entre 3 y 90 caracteres.')
