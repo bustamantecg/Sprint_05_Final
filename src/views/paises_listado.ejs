@@ -46,7 +46,8 @@
                       </form> 
                     </td>                    
                     <td><%= pais.name.nativeName.spa.official %></td>
-                    <td><%= pais.capital.join(', ') %></td>
+                    <td><%= Array.isArray(pais.capital) ? pais.capital.join(', ') : pais.capital %></td>
+                  
                     <td><%= pais.borders.length > 0 ? pais.borders.join(', ') : 'Sin fronteras' %></td>
                     <td><%= pais.area.toLocaleString('es-ES') %> km²</td>
                     <td><%= pais.population.toLocaleString('es-ES') %></td>

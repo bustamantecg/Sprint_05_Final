@@ -1,25 +1,30 @@
 import mongoose from "mongoose";
-//const mongoose = require('mongoose');
 
-const PaisSchema = new mongoose.Schema({
-  name: {
-    common: { type: String, required: true },
-    official: { type: String, required: true },
-    nativeName: {
-      spa: {
-        official: { type: String, required: true },
-        common: { type: String },
+// Eliminar modelo si ya existe para evitar errores de caché
+delete mongoose.connection.models["paises"];
+
+const PaisSchema = new mongoose.Schema(
+  {
+    name: {
+      common: { type: String, required: true },
+      official: { type: String, required: true },
+      nativeName: {
+        spa: {
+          official: { type: String, required: true },
+          common: { type: String },
+        },
       },
     },
+    capital: { type: [String], required: true }, // Array de Strings
+    borders: { type: [String], default: ["Sin fronteras"] }, // Array de Strings
+    area: { type: Number, required: true }, // Número
+    population: { type: Number, required: true }, // Número
+    gini: { type: mongoose.Schema.Types.Mixed, default: "No disponible" }, // Objeto o String
+    timezones: { type: [String], required: true }, // Array de Strings
+    creador: { type: String, required: true },
   },
-  capital: { type: String, required: true, },
-  borders: { type: String, default: 'Sin fronteras', },
-  area: { type: String, required: true, },
-  population: { type: String, required: true, },
-  gini: { type: String, default: 'No disponible', },
-  timezones: { type: String, required: true, },
-  creador: {type: String, required: true, },
-}, { timestamps: true });
+  { timestamps: true }
+);
 
-// Exporta el modelo
-module.exports = mongoose.model('Pais', PaisSchema);
+const Pais = mongoose.model("paises", PaisSchema);
+export default Pais;

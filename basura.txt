@@ -28,3 +28,36 @@ const processFile = () => {
     console.log('Archivo procesado y guardado como "processed_data.json".');
   };
   
+
+  renderiza campo continente para editar:
+          <div class="mb-3">
+            <label for="continents" class="form-label">Continentes:</label>
+            <input type="text" id="continents" name="continents" class="form-control" value="<%= pais.continents %>" placeholder="Separar por comas si son varios" required>
+          </div>
+
+alta formulario 4 campos        
+              <div class="mb-3">
+                <label for="region" class="form-label">Región:</label>
+                <input type="text" id="region" name="region" class="form-control" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="subregion" class="form-label">Subregión:</label>
+                <input type="text" id="subregion" name="subregion" class="form-control">
+              </div>
+              
+              <div class="mb-3">
+                <label for="independent" class="form-label">¿Es independiente?. Seleccione Si o No</label>
+                <select id="independent" name="independent" class="form-control" required>
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="unMember" class="form-label">Miembro de la ONU: Seleccione Si o No</label>
+                <select id="unMember" name="unMember" class="form-control" required>
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>

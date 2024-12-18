@@ -22,19 +22,25 @@ export function renderizandoPais(pais) {
       ? convertirObjeto(pais.languages)
       : null,
     borders: Array.isArray(pais.borders)
-      ? pais.borders.join(', ')
-      : 'Sin fronteras',
+      ? pais.borders
+      : typeof pais.borders === 'string'
+      ? [pais.borders]
+      : [],
+    
     area: pais.area || null,
     population: pais.population || null,
     gini: pais.gini
       ? convertirObjeto(pais.gini)
       : null,
     timezones: Array.isArray(pais.timezones)
-      ? pais.timezones.join(', ')
-      : null,
-    continents: Array.isArray(pais.continents)
+      ? pais.timezones
+      : typeof pais.timezones === 'string'
+      ? [pais.timezones]
+      : [],
+    
+  /*  continents: Array.isArray(pais.continents)
       ? pais.continents.join(', ')
-      : null,
+      : null,*/
     capitalInfo: {
       latlng: Array.isArray(pais.capitalInfo?.latlng)
         ? pais.capitalInfo.latlng

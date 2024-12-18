@@ -58,7 +58,12 @@ export const getPaisController = async (req, res) => {
     if (!pais) {
       return res.status(404).send('País no encontrado');
     }    
-    res.render('editarPais', { title:'Editar País', pais }); // Renderiza el formulario con los datos
+    // Renderiza el formulario con los datos del país y un array vacío para errores
+    res.render('editarPais', { 
+      title: 'Editar País', 
+      pais, 
+      errores: [] // Pasar un array vacío si no hay errores
+    });
   } catch (error) {    
     res.status(500).send('Error al cargar los datos del País');
   }
@@ -115,7 +120,8 @@ export const updatePaisController = async (req, res) => {
     }
 
     // Redirigir o enviar respuesta de éxito
-    res.redirect(`/paises/${id}`); // Redirige a la vista del país actualizado
+    //res.redirect(`/paises/${id}`); // Redirige a la vista del país actualizado
+    res.redirect('/pais/todos'); // Redirige a la vista del país actualizado
   } catch (error) {
     console.error('Error al actualizar el país:', error);
     return res.status(500).render('editarPais', {

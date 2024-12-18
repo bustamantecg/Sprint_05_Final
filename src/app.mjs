@@ -141,14 +141,15 @@ app.use((req, res, next) => {
 */
 /************ definiciones de los EndPoint *************************************************** */
 
-app.use('/pais', paisesRoutes);
 
+
+//********************* Inicio **************************************************** */
 app.get('/', (req, res) =>{
   res.render('index',{
     title:'Página Principal'
   })
 });
-
+//***************** Acerca De ***************************************************** */
 app.get('/about', (req, res) => {
   res.render('acercade', {
     title: 'Acerca De'}
@@ -161,15 +162,8 @@ app.get('/contact', (req, res) =>{
   });
 });
 
-/********************** Listado de Paises ******************************************** */
-
-/********************** Nuevo Pais *************************************************** */
-
-/********************** Editar Pais ************************************************** */
-
-/**********************  Eliminar Pais *********************************************** */
-
-// Inicia el servidor
+app.use('/pais', paisesRoutes);
+// ******************** Inicia el servidor ************************************
 app.listen(port, () => {
   console.log(`Servidor escuchando en http://localhost:${port}`);
   console.log(`Ctrl+C para detener servidor`);

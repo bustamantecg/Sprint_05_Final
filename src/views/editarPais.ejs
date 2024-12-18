@@ -17,15 +17,26 @@
             </div>
           <% } %>
         
-          <div class="mb-3">
-            <label for="common" class="form-label">Nombre popular:</label>
-            <input type="text" id="common" name="name[common]" class="form-control" value="<%= pais.name.common %>" required>
-          </div>
-        
-          <div class="mb-3">
-            <label for="official" class="form-label">Nombre oficial:</label>
-            <input type="text" id="official" name="name[official]" class="form-control" value="<%= pais.name.official %>" required>
-          </div>
+              <!-- Nombre común -->
+              <div class="mb-3">
+                <label for="common" class="form-label">Nombre popular:</label>
+                <input type="text" id="common" name="name[common]" class="form-control" value="<%= pais.name.common %>"
+                  required>
+              </div>
+
+              <!-- Nombre oficial -->
+              <div class="mb-3">
+                <label for="official" class="form-label">Nombre oficial:</label>
+                <input type="text" id="official" name="name[official]" class="form-control"
+                  value="<%= pais.name.official %>" required>
+              </div>
+
+              <!-- Nombre oficial en español -->
+              <div class="mb-3">
+                <label for="nativeNameSpaOfficial" class="form-label">Nombre oficial (Español):</label>
+                <input type="text" id="nativeNameSpaOfficial" name="name[nativeName][spa][official]"
+                  class="form-control" value="<%= pais.name.nativeName.spa.official %>" required>
+              </div>
         
           <div class="mb-3">
             <label for="independent" class="form-label">¿Es independiente?</label>
@@ -44,16 +55,6 @@
           </div>
         
           <div class="mb-3">
-            <label for="region" class="form-label">Región:</label>
-            <input type="text" id="region" name="region" class="form-control" value="<%= pais.region %>" required>
-          </div>
-        
-          <div class="mb-3">
-            <label for="subregion" class="form-label">Subregión:</label>
-            <input type="text" id="subregion" name="subregion" class="form-control" value="<%= pais.subregion %>">
-          </div>
-        
-          <div class="mb-3">
             <label for="area" class="form-label">Área (km²):</label>
             <input type="number" id="area" name="area" class="form-control" value="<%= pais.area %>" required>
           </div>
@@ -61,11 +62,6 @@
           <div class="mb-3">
             <label for="capital" class="form-label">Capital:</label>
             <input type="text" id="capital" name="capital" class="form-control" value="<%= pais.capital %>" placeholder="Separar por comas si son varias">
-          </div>
-        
-          <div class="mb-3">
-            <label for="continents" class="form-label">Continentes:</label>
-            <input type="text" id="continents" name="continents" class="form-control" value="<%= pais.continents %>" placeholder="Separar por comas si son varios" required>
           </div>
         
           <div class="mb-3">

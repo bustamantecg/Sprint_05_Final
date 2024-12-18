@@ -8,7 +8,8 @@ import {
       updatePaisController } from '../controllers/paisesController.mjs'
 
 import  paisesValidaciones  from '../validations/paisesValidations.mjs';
-import { manejadorValidacionErroresPais } from "../middlewares/errorMiddleware.mjs";
+import  manejadorValidacionErrores  from "../middlewares/errorMiddleware.mjs";
+
   
 const router = express.Router();
 
@@ -24,15 +25,16 @@ router.post('/crear', (req, res, next) => {
     //console.log("Datos", req.body); // Muestra los datos enviados desde el formulario
     req.body.capital = req.body.capital.split(',').map(p => p.trim());
     next();
-  }, paisesValidaciones(), manejadorValidacionErroresPais('addPais'), insertPaisController);
+  }, paisesValidaciones(), manejadorValidacionErrores('addPais'), insertPaisController);
 
 //************* Muestra y Edición de Pais  *************************************************
 router.get('/editar/porid/:id', getPaisController);
 router.put('/editar/porid/:id', 
   paisesValidaciones(), 
-  manejadorValidacionErroresPais('editarPais'), 
+  manejadorValidacionErrores('editarPais'), 
   updatePaisController
 ); 
+
 //*****************  FIN *******************************************************************
 export default router;
 

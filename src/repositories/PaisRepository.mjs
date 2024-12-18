@@ -1,12 +1,12 @@
+//import mongoose from 'mongoose';
 import Pais from "../models/Pais.mjs"
 import IRepository from "./IRepository.mjs";
-import mongoose from 'mongoose';
 
 class PaisRepository extends IRepository{
 
     async obtenerTodos(){
-        // return await Pais.find({});
-        return await Pais.find().sort({ 'name.official': 1 });
+        return await Pais.find({});
+        
     }
 
     async deletePaisById(id){
@@ -28,7 +28,6 @@ class PaisRepository extends IRepository{
             throw new Error("Error al insertar País");
         }
     }
-
 };
 
 export default new PaisRepository();
