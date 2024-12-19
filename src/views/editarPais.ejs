@@ -17,21 +17,7 @@
             </div>
           <% } %>
         
-              <!-- Nombre común -->
-              <div class="mb-3">
-                <label for="common" class="form-label">Nombre popular:</label>
-                <input type="text" id="common" name="name[common]" class="form-control" value="<%= pais.name.common %>"
-                  required>
-              </div>
-
-              <!-- Nombre oficial -->
-              <div class="mb-3">
-                <label for="official" class="form-label">Nombre oficial:</label>
-                <input type="text" id="official" name="name[official]" class="form-control"
-                  value="<%= pais.name.official %>" required>
-              </div>
-
-              <!-- Nombre oficial en español -->
+          <!-- Nombre oficial en español -->
               <div class="mb-3">
                 <label for="nativeNameSpaOfficial" class="form-label">Nombre oficial (Español):</label>
                 <input type="text" id="nativeNameSpaOfficial" name="name[nativeName][spa][official]"
@@ -52,7 +38,12 @@
             <label for="population" class="form-label">Población:</label>
             <input type="number" id="population" name="population" class="form-control" value="<%= pais.population %>" required>
           </div>
-        
+          
+          <div class="mb-3">
+            <label for="gini" class="form-label">Población:</label>
+            <input type="text" id="gini" name="gini" class="form-control" value="<%= pais.gini %>" required>
+          </div>
+
           <div class="mb-3">
             <label for="creador" class="form-label">Creador:</label>
             <input type="text" id="creador" name="creador" class="form-control" value="Carlos Bustamante" readonly>

@@ -15,9 +15,7 @@ export async function obtenerTodosLosPaisesController(req, res){
         pais.gini = Object.fromEntries(pais.gini); // Transforma el Map en un objeto
       }
     });
-
-
-    const paisesRenderizados = renderizandoListaPaises(paises);
+    const paisesRenderizados = renderizandoListaPaises(paises);   
     res.render('paises_listado', {paisesRenderizados, title:'Listado de Paises'}
     );  
 };

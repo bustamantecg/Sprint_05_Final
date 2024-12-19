@@ -2,6 +2,41 @@ export function renderizandoPais(pais) {
   return {
     _id: pais._id,
     name: {
+      official: pais.name?.nativeName?.spa?.official || "No disponible",
+    },
+    nombrePais: pais.name.nativeName?.spa?.official || pais.name.official,
+    capital: Array.isArray(pais.capital)
+      ? pais.capital
+      : typeof pais.capital === "string"
+      ? [pais.capital]
+      : [],
+    borders: Array.isArray(pais.borders)
+      ? pais.borders
+      : ["Sin fronteras"],
+    area: pais.area || 0,
+    population: pais.population || 0,
+    gini: pais.gini instanceof Map
+      ? Object.fromEntries(pais.gini) // Convertimos el Map en objeto
+      : null, // Null si no es un Map
+    timezones: Array.isArray(pais.timezones)
+      ? pais.timezones
+      : [],
+    creador: pais.creador || "Desconocido",
+  };
+}
+
+export function renderizandoListaPaises(paises) {
+  return Array.isArray(paises)
+    ? paises.map((pais) => renderizandoPais(pais))
+    : [];
+}
+
+
+/*
+export function renderizandoPais(pais) {
+  return {
+    _id: pais._id,
+    name: {
       common: pais.name?.common || null,
       official: pais.name?.official || null,
       nativeName: pais.name?.nativeName
@@ -37,10 +72,6 @@ export function renderizandoPais(pais) {
       : typeof pais.timezones === 'string'
       ? [pais.timezones]
       : [],
-    
-    /* continents: Array.isArray(pais.continents)
-      ? pais.continents.join(', ')
-      : null, */
     capitalInfo: {
       latlng: Array.isArray(pais.capitalInfo?.latlng)
         ? pais.capitalInfo.latlng
@@ -55,6 +86,9 @@ export function renderizandoListaPaises(paises) {
     ? paises.map((pais) => renderizandoPais(pais))
     : [];
 }
+
+
+*/
 
 // Función auxiliar para convertir objetos simples en clave-valor
 function convertirObjeto(obj) {

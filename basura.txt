@@ -77,3 +77,48 @@ alta formulario 4 campos
                   <option value="false">No</option>
                 </select>
               </div>
+
+
+////////
+
+_id
+67638b4558354d9c21199204
+
+name
+Object
+
+nativeName
+Object
+
+spa
+Object
+official
+"República de Nicaragua"
+
+capital
+Array (1)
+0
+"Managua"
+
+borders
+Array (2)
+0
+"CRI"
+1
+"HND"
+area
+130373
+population
+6624554
+
+gini
+Object
+2014
+46.2
+
+timezones
+Array (1)
+0
+"UTC-06:00"
+creador
+"Carlos Bustamante"              

@@ -1,7 +1,7 @@
 import { body } from 'express-validator';
 
 const paisesValidaciones = () => [
-  body('nombreEspanol')
+  body('nombrePais')
     .notEmpty().withMessage('El nombre oficial es requerido.')
     .isString().withMessage('El nombre oficial debe ser una cadena de texto.')
     .isLength({ min: 3, max: 90 }).withMessage('El nombre oficial debe tener entre 3 y 90 caracteres.')
@@ -36,11 +36,30 @@ const paisesValidaciones = () => [
     .notEmpty().withMessage('El campo población es obligatorio.')
     .isInt({ gt: 0 }).withMessage('La población debe ser un número entero positivo.'),
 
-  body('gini')
+ /* body('gini')
     .optional()
     .custom((value) => {
       const giniValues = typeof value === 'object' ? Object.values(value) : [];
       if (!giniValues.every(g => g >= 0 && g <= 100)) {
+        throw new Error('El índice GINI debe estar entre 0 y 100.');
+      }
+      return true;
+    }),
+    */
+    body('gini')
+    .optional()
+    .custom((value) => {
+      let giniObject;
+      try {
+        // Intentamos convertir el string a un objeto
+        giniObject = typeof value === 'string' ? JSON.parse(value.replace(/'/g, '"')) : value;
+      } catch (error) {
+        throw new Error('El campo gini debe tener un formato válido, como {"2019": 42.7}');
+      }
+  
+      // Validamos que los valores estén en el rango [0, 100]
+      const giniValues = Object.values(giniObject);
+      if (!giniValues.every(g => typeof g === 'number' && g >= 0 && g <= 100)) {
         throw new Error('El índice GINI debe estar entre 0 y 100.');
       }
       return true;
